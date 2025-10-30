@@ -17,7 +17,9 @@ name_on_order = st.text_input("Name on Smoothie:")
 st.write("The name on your smoothie will be:", name_on_order)
 
 # Load fruit options from Snowflake
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON')
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop();                                                                     
 fruit_list = [row['FRUIT_NAME'] for row in my_dataframe.collect()]  # Convert to list for multiselect
 
 # Let user select ingredients
